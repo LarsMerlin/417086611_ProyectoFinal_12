@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainPrueba.cpp">
+    <ClCompile Include="MainPF.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
