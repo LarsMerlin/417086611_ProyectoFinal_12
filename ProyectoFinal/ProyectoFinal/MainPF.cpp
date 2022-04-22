@@ -6,7 +6,7 @@
 
 // GLFW
 #include <GLFW/glfw3.h>
-//Other List
+// Other Libs
 #include "SOIL2/SOIL2.h"
 #include "stb_image.h"
 
@@ -94,6 +94,9 @@ int main( )
     // Carga de modelos
     
     Model desk((char*)"Models/MLars/escritoriolars.obj");
+    Model espada1((char*)"Models/MLarsEspada/espada1lars.obj");
+    Model espada2((char*)"Models/MLarsEspada/espada2lars.obj");
+    Model escudo1((char*)"Models/MLarsEscudo/Escudo1lars.obj"); 
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -123,7 +126,7 @@ int main( )
         // Draw the loaded model
         glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        desk.Draw(shader);
+        escudo1.Draw(shader);
         glfwSwapBuffers( window );
     }
     
