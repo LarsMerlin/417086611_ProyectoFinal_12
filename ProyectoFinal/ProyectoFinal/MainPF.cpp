@@ -98,6 +98,7 @@ int main( )
     Model espada2((char*)"Models/MLarsEspada/espada2lars.obj");
     Model escudo1((char*)"Models/MLarsEscudo/Escudo1lars.obj"); 
     Model sofa((char*)"Models/MLarsSofa/sofa.obj"); 
+    Model reloj((char*)"Models/MLarsReloj/reloj.obj"); 
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -127,7 +128,7 @@ int main( )
         // Draw the loaded model
         glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        sofa.Draw(shader);
+        reloj.Draw(shader);
         glfwSwapBuffers( window );
     }
     
