@@ -96,9 +96,12 @@ int main( )
     Model desk((char*)"Models/MLars/escritoriolars.obj");
     Model espada1((char*)"Models/MLarsEspada/espada1lars.obj");
     Model espada2((char*)"Models/MLarsEspada/espada2lars.obj");
-    Model escudo1((char*)"Models/MLarsEscudo/Escudo1lars.obj"); 
-    Model sofa((char*)"Models/MLarsSofa/sofa.obj"); 
-    Model reloj((char*)"Models/MLarsReloj/reloj.obj"); 
+    Model escudo1((char*)"Models/MLarsEscudo/Escudo1.obj");
+    Model sofa((char*)"Models/MLarsSofa/sofa.obj");
+    Model reloj((char*)"Models/MLarsReloj/reloj.obj");
+    Model piso((char*)"Models/MLarsPiso/piso.obj");
+    Model camino((char*)"Models/MLarsPiso/camino.obj");
+    Model chimenea((char*)"Models/MLarsChimenea/chimenea.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -126,10 +129,56 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
         // Draw the loaded model
+        // Draw the loaded models
         glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        piso.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        desk.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        espada1.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(5.0f, 0.0f, -2.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        espada2.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-2.0f, 0.0f, -1.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        escudo1.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(6.0f, 0.0f, -1.0f));
+        //model = glm::rotate(model, glm::radians(-3.14159f), glm::vec3(0.0f, 1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        sofa.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-4.0f, 0.0f, 2.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         reloj.Draw(shader);
-        glfwSwapBuffers( window );
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(4.0f, 0.0f, -3.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        chimenea.Draw(shader);
+        glBindVertexArray(0);
+
+        glfwSwapBuffers(window);
+
     }
     
     glfwTerminate( );
