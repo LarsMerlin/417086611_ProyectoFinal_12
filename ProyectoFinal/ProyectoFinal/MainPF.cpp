@@ -100,10 +100,14 @@ int main( )
     Model sofa((char*)"Models/MLarsSofa/sofa.obj");
     Model reloj((char*)"Models/MLarsReloj/reloj.obj");
     Model piso((char*)"Models/MLarsPiso/piso.obj");
+    Model pisoint((char*)"Models/MLarsPiso/pisoint.obj");
     Model camino((char*)"Models/MLarsPiso/camino.obj");
     Model chimenea((char*)"Models/MLarsChimenea/chimenea.obj");
-    glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
-    
+    Model letras((char*)"Models/MLarsLetras/letras.obj");
+   /* Model Room1((char*)"Models/MLarsCuartoint/Kitroom1.obj");
+    Model Room2((char*)"Models/MLarsCuartoint/Kitroom2.obj");*/
+    glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
+
   
 
     // Game loop
@@ -131,8 +135,22 @@ int main( )
         // Draw the loaded model
         // Draw the loaded models
         glm::mat4 model(1);
+        model = glm::scale(model, glm::vec3(2.75f, 0.0f, 2.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         piso.Draw(shader);
+        glBindVertexArray(0);
+
+        /*model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 4.30f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        camino.Draw(shader);
+        glBindVertexArray(0);*/
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+        model = glm::translate(model, glm::vec3(2.0f, 0.1f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        pisoint.Draw(shader);
         glBindVertexArray(0);
 
         model = glm::mat4(1);
@@ -160,7 +178,7 @@ int main( )
 
         model = glm::mat4(1);
         model = glm::translate(model, glm::vec3(6.0f, 0.0f, -1.0f));
-        //model = glm::rotate(model, glm::radians(-3.14159f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(-3.14159f), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         sofa.Draw(shader);
         glBindVertexArray(0);
@@ -176,6 +194,24 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         chimenea.Draw(shader);
         glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(2.0f, 1.0f, -5.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        letras.Draw(shader);
+        glBindVertexArray(0);
+
+        /*model = glm::translate(model, glm::vec3(4.5f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        Room1.Draw(shader);
+        glBindVertexArray(0);*/
+
+        /*model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(7.4f, 0.0f, -1.90f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        Room2.Draw(shader);
+        glBindVertexArray(0);*/
+
 
         glfwSwapBuffers(window);
 
