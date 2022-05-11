@@ -59,7 +59,7 @@ int main( )
     glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
     
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Adaptacion,carga de modelos y camara sintetica", nullptr, nullptr );
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Proyecto Final FLLA", nullptr, nullptr );
     
     if ( nullptr == window )
     {
@@ -115,6 +115,18 @@ int main( )
     Model Room2((char*)"Models/MLarsCuartoint/Kitroom2.obj");
     Model ARoom((char*)"Models/MLarsCuarto/ARoom.obj");
     Model ARoom2((char*)"Models/MLarsCuarto/ARoom2.obj");
+    Model ParteB1((char*)"Models/LarsFachada/ParteB1.obj");
+    Model ParteB2((char*)"Models/LarsFachada/ParteB2.obj");
+    Model ParteA1((char*)"Models/LarsFachada/ParteA1.obj");
+    Model ParteA2((char*)"Models/LarsFachada/ParteA2.obj");
+    Model ParteP1((char*)"Models/LarsFachada/ParteP1.obj");
+    Model ParteP2((char*)"Models/LarsFachada/ParteP2.obj");
+    Model ParteP3((char*)"Models/LarsFachada/ParteP3.obj");
+    Model ParteS((char*)"Models/LarsFachada/ParteS.obj");
+    Model PartePA1((char*)"Models/LarsFachada/PartePA1.obj");
+    Model PartePA2((char*)"Models/LarsFachada/PartePA2.obj");
+    Model PartePB2((char*)"Models/LarsFachada/PartePB2.obj");
+
 
     /* Model Piso((char*)"Models/Sea/Sea.obj");*/
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
@@ -143,8 +155,7 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
-        // Draw the loaded model
-       // Draw the loaded models
+        // Draw the loaded models
         glm::mat4 model(1);
         model = glm::scale(model, glm::vec3(2.75f, 0.0f, 2.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
@@ -155,7 +166,7 @@ int main( )
         model = glm::mat4(1);
         model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0, 0.0f));
         model = glm::scale(model, glm::vec3(0.70f, 1.0f, 1.0f));
-        model = glm::translate(model, glm::vec3(-27.0f, 0.1f, 10.0f));
+        model = glm::translate(model, glm::vec3(-27.0f, 0.1f, 6.5f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         camino.Draw(shader);
         glBindVertexArray(0);
@@ -314,6 +325,74 @@ int main( )
         ARoom2.Draw(shader);
         glBindVertexArray(0);
 
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-9.5f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ParteB1.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-9.0f, -0.3f, 5.25f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ParteB2.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-8.5f, -1.0f, 8.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ParteA1.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-8.35f, 5.5f, -6.15f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ParteA2.Draw(shader);
+        glBindVertexArray(0);
+
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(7.35f, 0.0f, -1.4f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ParteP1.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(7.35f, 0.0f, -1.4f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ParteP2.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(7.35f, 0.0f, -1.25f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ParteP3.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(7.0f, 0.0f, -1.25f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ParteS.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(7.0f, 0.0f, -1.4f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        PartePA1.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(7.15f, 0.0f, -1.4f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        PartePA2.Draw(shader);
+        glBindVertexArray(0);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(7.5f, 0.0f, -1.25f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        PartePB2.Draw(shader);
+        glBindVertexArray(0);
+
+
         /*offsetu += 0.0001f;
         offsetv = 0.0f;
         offset = glm::vec2(offsetu, offsetv);
@@ -323,7 +402,6 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Piso.Draw(shader);
         glBindVertexArray(0);*/
-
 
 
 
