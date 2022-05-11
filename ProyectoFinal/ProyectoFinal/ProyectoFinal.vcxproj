@@ -22,10 +22,22 @@
     <ClCompile Include="MainPF.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\modelLoading.frag" />
+    <None Include="Shaders\modelLoading.vs" />
     <None Include="Shaders\Shaders\lamp.frag" />
     <None Include="Shaders\Shaders\lamp.vs" />
     <None Include="Shaders\Shaders\lighting.frag" />
     <None Include="Shaders\Shaders\lighting.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="meshAnim.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="modelAnim.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="Texture.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
