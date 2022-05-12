@@ -1,0 +1,1 @@
+En esta carpeta están las imágenes que use para generar el SkyBox. 
