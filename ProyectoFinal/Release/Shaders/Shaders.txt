@@ -1,0 +1,1 @@
+En esta carpeta están todos los shaders que use para mi proyecto de Lab. de Computación Gráfica. 
